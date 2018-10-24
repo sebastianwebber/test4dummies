@@ -60,3 +60,8 @@ func Test_superUpper_subTests(t *testing.T) {
 		})
 	}
 }
+func BenchmarkSuperUpper(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		superUpper("hello")
+	}
+}
