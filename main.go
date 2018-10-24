@@ -24,7 +24,8 @@ func init() {
 }
 
 func main() {
-	fmt.Printf("Hello %s!\n", inputName)
+	coolName, _ := superUpper(inputName)
+	fmt.Printf("Hello %s!\n", coolName)
 }
 
 // superUpper its the best and only great string upper function! =p
