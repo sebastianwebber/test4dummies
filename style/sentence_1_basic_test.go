@@ -14,14 +14,9 @@ var (
 
 func Test_basic_Sentence(t *testing.T) {
 
-	out, err := Sentence(input)
-
-	if err != nil {
-		t.Errorf("error running Title: %w", err)
-	}
+	out, _ := Sentence(input)
 
 	if !reflect.DeepEqual(out, expected) {
 		t.Errorf("Result not as expected:\n%v", diff.CharacterDiff(expected, out))
 	}
-
 }
