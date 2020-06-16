@@ -1,8 +1,6 @@
 package style
 
 import (
-	"fmt"
-	"os"
 	"reflect"
 	"testing"
 
@@ -13,21 +11,6 @@ var (
 	input    = `primeira frase. segunda frase com acento. é...só que não.`
 	expected = `Primeira frase. Segunda frase com acento. É...Só que não.`
 )
-
-func TestMain(m *testing.M) {
-	beforeTests()
-	out := m.Run()
-	afterTests()
-	os.Exit(out)
-}
-
-func beforeTests() {
-	fmt.Println("Running tests Setup - TEAR UP")
-}
-
-func afterTests() {
-	fmt.Println("Ending tests - TEAR DOWN")
-}
 
 func Test_basic_Sentence(t *testing.T) {
 
