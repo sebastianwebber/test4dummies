@@ -1,42 +1,26 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
-	"strings"
+
+	"github.com/sebastianwebber/test4dummies/style"
 )
 
-var (
-	inputName string
-)
-
-func parseEnvs() {
-	if name := os.Getenv("NAME"); name != "" {
-		inputName = name
-	}
-}
+var sentence string
 
 func init() {
-	flag.StringVar(&inputName, "name", "World", "Put your name here!")
-	flag.Parse()
-	parseEnvs()
+	if len(os.Args) > 1 {
+		sentence = os.Args[1]
+	}
 }
 
 func main() {
-	coolName, _ := superUpper(inputName)
-	fmt.Printf("Hello %s!\n", coolName)
-}
+	pretty, err := style.Sentence(sentence)
 
-// superUpper its the best and only great string upper function! =p
-func superUpper(nome string) (out string, err error) {
-
-	if nome == "" {
-		err = fmt.Errorf("Empty string not allowed here")
+	if err != nil {
+		fmt.Printf("fail: %v\n", err)
 		return
 	}
-
-	out = strings.ToUpper(nome)
-
-	return
+	fmt.Println(pretty)
 }
